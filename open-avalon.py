@@ -41,5 +41,9 @@ information_button.click()
 amenities_button = browser.find_element(By.CSS_SELECTOR, "#Amenities a")
 amenities_button.click()
 
+reserve_racquetball_button = browser.find_element(
+    By.CSS_SELECTOR, "input[data-amenity='ea434ccd-bdf4-458c-8ae5-d27fbc38ea13']")
+reserve_racquetball_button.click()
+
 time.sleep(10)  # This command keeps the window open for 10 seconds
 browser.quit()
