@@ -2,6 +2,8 @@ import os
 import time  # This is necessary to delay the closing of the window later. This module is included w/ python
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 with open('./.env') as f:
     content = f.readlines()
@@ -29,11 +31,15 @@ login_button = browser.find_element(By.ID, "submit-sign-in")
 login_button.click()
 
 # The following applies to the second page presented. (1st after login);
+# wait = WebDriverWait(browser, 3)
+# information_button = wait.until(
+#     EC.presence_of_element_located((By.CSS_SELECTOR, "#Information a")))
 information_button = browser.find_element(By.CSS_SELECTOR, "#Information a")
 information_button.click()
 
 # 3rd Page
 amenities_button = browser.find_element(By.CSS_SELECTOR, "#Amenities a")
+amenities_button.click()
 
 time.sleep(10)  # This command keeps the window open for 10 seconds
 browser.quit()
