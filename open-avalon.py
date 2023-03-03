@@ -6,12 +6,8 @@ from selenium.webdriver.common.by import By
 with open('./.env') as f:
     content = f.readlines()
 
-print('from with statement', content)
-
 # for this to work the format in the .env file has to be very specific USERNAME='jp' - no spaces etc.
 content = [x.strip().split('=') for x in content]
-
-print('after split', content)
 
 for line in content:
     os.environ[line[0]] = line[1]
@@ -31,6 +27,13 @@ password_field.send_keys(os.environ.get('PASSWORD'))
 # Find and click the login button
 login_button = browser.find_element(By.ID, "submit-sign-in")
 login_button.click()
+
+# The following applies to the second page presented. (1st after login);
+information_button = browser.find_element(By.CSS_SELECTOR, "#Information a")
+information_button.click()
+
+# 3rd Page
+amenities_button = browser.find_element(By.CSS_SELECTOR, "#Amenities a")
 
 time.sleep(10)  # This command keeps the window open for 10 seconds
 browser.quit()
